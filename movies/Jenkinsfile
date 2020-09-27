@@ -94,6 +94,7 @@ pipeline {
         }
 
         stage('Wait for deployment in DEV env') {
+	  scripts {
             //DONE: Watch deployment until pod is in 'Running' state
 	    script {
 		openshift.withCluster() {
@@ -104,6 +105,7 @@ pipeline {
 		    }
 		}
 	    }
+	  }
         }
 
         stage('Promote to Staging Env') {
